@@ -1,0 +1,28 @@
+{
+  "name": "uwudeau",
+  "version": "0.1.0",
+  "description": "",
+  "main": "uwu.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node uwu.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Keenan-Nicholson/uwudeau.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Keenan-Nicholson/uwudeau/issues"
+  },
+  "homepage": "https://github.com/Keenan-Nicholson/uwudeau#readme",
+  "dependencies": {
+    "jsondb": "^1.0.0",
+    "lowdb": "^3.0.0",
+    "minimist": "^1.2.6",
+    "node-cron": "^3.0.2",
+    "twit": "^2.2.11"
+  }
+}
