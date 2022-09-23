@@ -34,28 +34,12 @@ const job = async () => {
   };
 
   const emoji = [
-    "(´･ᴗ･ ` )",
-    "(„• ֊ •„)",
-    "(.❛ ᴗ ❛.)",
-    "(⁀ᗢ⁀)",
-    "(￢‿￢ ),",
-    "(¬‿¬ )",
-    "(*￣▽￣)",
-    "( ˙▿˙ )",
-    "(¯▿¯)",
-    "＼(٥⁀▽⁀ )／",
-    "(„• ᴗ •„)",
-    "(ᵔ◡ᵔ) ",
-    "( ´ ▿ ` )",
-    "☜(⌒▽⌒)☞",
-    "(⁠-⁠ ⁠ω⁠ ⁠-⁠)",
-    "(￣o￣*)ゞ",
+    "(*^v^)",
+    "(>*.*)>",
+    "(¯.¯)",
+    "(￣o￣*)",
     "(*^.^*)",
-    ";3",
-    "(´꒳`)",
-    "(* ^ ω ^)",
-    "(ᵔ◡ᵔ)",
-    "＼(＾▽＾)／",
+    "＼(＾.＾)／",
   ];
 
   T.get(
@@ -98,14 +82,12 @@ const job = async () => {
       tweetText = tweetText.replaceAll(/(?:https?|ftp):\/\/[\n\S]+/g, "");
       tweetText = tweetText.replaceAll("@", "");
 
-      /*
-      let tweetTextEmoji = tweetText.replaceAll(
+      let tweetTextEmoji = tweetText.replace(
         ".",
         " " + emoji[Math.floor(Math.random() * emoji.length)] + " "
       );
-      */
 
-      T.post("statuses/update", { status: tweetText.slice(0, 280) });
+      T.post("statuses/update", { status: tweetTextEmoji.slice(0, 280) });
     }
   );
 };
