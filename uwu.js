@@ -94,7 +94,7 @@ const job = async () => {
 
 const main = async () => {
   await db.read();
-  db.data ||= { tweets: [] };
+  db.data = { tweets: [] };
 
   switch (argv._[0]) {
     case "start-bot":
