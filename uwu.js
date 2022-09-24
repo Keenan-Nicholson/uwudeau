@@ -37,9 +37,14 @@ const job = async () => {
     "(*^v^)",
     "(>*.*)>",
     "(¯.¯)",
-    "(￣o￣*)",
+    "(￣-￣*)",
     "(*^.^*)",
     "＼(＾.＾)／",
+    "(-_-;)",
+    "(>_<)",
+    "(>w<)",
+    "(=^・・^=)",
+    "(#^.^#)",
   ];
 
   T.get(
@@ -49,7 +54,7 @@ const job = async () => {
       const tweetId = data[0].id;
 
       if (db.data.tweets.includes(tweetId)) {
-        console.log(`Already tweeted: ${tweetId}`);
+        //console.log(`Already tweeted: ${tweetId}`);
         return;
       }
 
@@ -62,9 +67,21 @@ const job = async () => {
       tweetText = tweetText.toLowerCase();
       tweetText = tweetText.replaceAll("l", "w");
       tweetText = tweetText.replaceAll("r", "w");
-      tweetText = tweetText.replaceAll("n", "wn");
-      tweetText = tweetText.replaceAll(" t", " t-t");
-      tweetText = tweetText.replaceAll(" d", " d-d");
+      tweetText = tweetText.replaceAll("you", "uwu");
+      tweetText = tweetText.replaceAll("ua", "uwa");
+      tweetText = tweetText.replaceAll("on", "own");
+      tweetText = tweetText.replaceAll("and", "awnd");
+
+      let index1 = Math.floor(tweetText.length / 3);
+      let index2 = Math.floor(tweetText.length / 4);
+
+      tweetText =
+        tweetText.slice(0, index1) +
+        tweetText.slice(index1).replace(" t", " t-t");
+
+      tweetText =
+        tweetText.slice(0, index2) +
+        tweetText.slice(index2).replace(" d", " d-d");
 
       if (tweetText[0] == "h") {
         tweetText = tweetText.replace("h", " h-h");
@@ -84,6 +101,11 @@ const job = async () => {
 
       let tweetTextEmoji = tweetText.replace(
         ".",
+        " " + emoji[Math.floor(Math.random() * emoji.length)] + " "
+      );
+
+      tweetTextEmoji = tweetTextEmoji.replace(
+        ",",
         " " + emoji[Math.floor(Math.random() * emoji.length)] + " "
       );
 
