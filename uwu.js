@@ -10,10 +10,14 @@ const adapter = new JSONFile(file);
 const db = new Low(adapter);
 
 const T = new Twit({
-  consumer_key: "",
-  consumer_secret: "",
-  access_token: "",
-  access_token_secret: "",
+  consumer_key:         '',
+
+  consumer_secret:      '',
+
+  access_token:         '',
+
+  access_token_secret:  ''
+
 });
 
 const cronSchedule = "*/10 * * * *";
@@ -26,11 +30,7 @@ const job = async () => {
     result_type: "recent",
     lang: "en",
     retweeted: false,
-    tweet_mode: "extended",
-
-    retweeted_status: {
-      truncated: false,
-    },
+    tweet_mode: "extended"
   };
 
   const emoji = [
@@ -63,6 +63,10 @@ const job = async () => {
       await db.write();
 
       let tweetText = data[0].full_text;
+
+      if(tweetText.slice(0,2).toLowerCase() == 'rt'){
+      return;
+      }
 
       tweetText = tweetText.toLowerCase();
       tweetText = tweetText.replaceAll("l", "w");
