@@ -10,10 +10,10 @@ const adapter = new JSONFile(file);
 const db = new Low(adapter);
 
 const T = new Twit({
-  consumer_key: "",
-  consumer_secret: "",
-  access_token: "",
-  access_token_secret: "",
+  consumer_key:         'fGvIhWfPxR1AM5z7mH2vyi9Wn',
+  consumer_secret:      '2aehHgChOmwSg2k4x8ITDbfa4lKL4kWqYqkaGyRJn6Cn3ZY8jm',
+  access_token:         '1572739462567792641-359OAqPE4m2UkNjbP1WFUEtXLSuuyp',
+  access_token_secret:  'zlJmQ8kyDshxxx0xMT8SlhICILW8Z6ZoPVJjO12U9m0EH'
 });
 
 const cronSchedule = "*/10 * * * *";
@@ -26,11 +26,7 @@ const job = async () => {
     result_type: "recent",
     lang: "en",
     retweeted: false,
-    tweet_mode: "extended",
-
-    retweeted_status: {
-      truncated: false,
-    },
+    tweet_mode: "extended"
   };
 
   const emoji = [
@@ -64,7 +60,16 @@ const job = async () => {
 
       let tweetText = data[0].full_text;
 
+      if(tweetText.slice(0,2).toLowerCase() == 'rt'){
+      return;
+      }
+
       tweetText = tweetText.toLowerCase();
+      tweetText = tweetText.replace("more here:","");
+      tweetText = tweetText.replace("here:","");
+      tweetText = tweetText.replace("take a look:","");
+      tweetText = tweetText.replace("tune in here:","");
+      tweetText = tweetText.replace(":",".");
       tweetText = tweetText.replaceAll("l", "w");
       tweetText = tweetText.replaceAll("r", "w");
       tweetText = tweetText.replaceAll("you", "uwu");
