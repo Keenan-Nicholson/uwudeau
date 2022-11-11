@@ -51,6 +51,11 @@ const job = async () => {
     "statuses/user_timeline",
     twitParams,
     async function (err, data, response) {
+      
+      if(data[0] === undefined){
+        return;
+      }
+
       const tweetId = data[0].id;
 
       if (db.data.tweets.includes(tweetId)) {
