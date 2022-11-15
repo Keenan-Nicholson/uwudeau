@@ -2,6 +2,8 @@ import Twit from "twit";
 import cron from "node-cron";
 import minimist from "minimist";
 import { Low, JSONFile } from "lowdb";
+import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config()
 
 const argv = minimist(process.argv.slice(2));
 
@@ -9,16 +11,13 @@ const file = "db.json";
 const adapter = new JSONFile(file);
 const db = new Low(adapter);
 
+
 const T = new Twit({
-  consumer_key:         '',
-
-  consumer_secret:      '',
-
-  access_token:         '',
-
-  access_token_secret:  ''
-
-});
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token: process.env.ACCESS_TOKEN,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+})
 
 const cronSchedule = "*/10 * * * *";
 
@@ -110,11 +109,6 @@ const job = async () => {
 
       let tweetTextEmoji = tweetText.replace(
         ".",
-        " " + emoji[Math.floor(Math.random() * emoji.length)] + " "
-      );
-
-      tweetTextEmoji = tweetTextEmoji.replace(
-        ",",
         " " + emoji[Math.floor(Math.random() * emoji.length)] + " "
       );
 

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Keenan-Nicholson/uwudeau#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "jsondb": "^1.0.0",
     "lowdb": "^3.0.0",
     "minimist": "^1.2.6",
