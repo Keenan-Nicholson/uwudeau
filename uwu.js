@@ -35,11 +35,8 @@ const job = async () => {
     "(¯.¯)",
     "(￣-￣*)",
     "(*^.^*)",
-    "＼(＾.＾)／",
     "(-_-;)",
-    "(>_<)",
     "(>w<)",
-    "(=^・・^=)",
     "(#^.^#)",
   ];
 
@@ -47,6 +44,10 @@ const job = async () => {
     "statuses/user_timeline",
     twitParams,
     async function (err, data, response) {
+      if(data[0].id === undefined){
+	return;
+      }
+
       const tweetId = data[0].id;
 
       if (db.data.tweets.includes(tweetId)) {
@@ -69,7 +70,6 @@ const job = async () => {
       tweetText = tweetText.replace("here:","");
       tweetText = tweetText.replace("take a look:","");
       tweetText = tweetText.replace("tune in here:","");
-      tweetText = tweetText.replace(":",".");
       tweetText = tweetText.replaceAll("l", "w");
       tweetText = tweetText.replaceAll("r", "w");
       tweetText = tweetText.replaceAll("you", "uwu");
