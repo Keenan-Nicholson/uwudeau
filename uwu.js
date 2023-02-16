@@ -10,10 +10,10 @@ const adapter = new JSONFile(file);
 const db = new Low(adapter);
 
 const T = new Twit({
-  consumer_key:         'fGvIhWfPxR1AM5z7mH2vyi9Wn',
-  consumer_secret:      '2aehHgChOmwSg2k4x8ITDbfa4lKL4kWqYqkaGyRJn6Cn3ZY8jm',
-  access_token:         '1572739462567792641-359OAqPE4m2UkNjbP1WFUEtXLSuuyp',
-  access_token_secret:  'zlJmQ8kyDshxxx0xMT8SlhICILW8Z6ZoPVJjO12U9m0EH'
+  consumer_key:        
+  consumer_secret:    
+  access_token:        
+  access_token_secret:  
 });
 
 const cronSchedule = "*/10 * * * *";
